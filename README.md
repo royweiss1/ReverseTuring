@@ -18,4 +18,5 @@ Run the script with the following arguments:
 python3 main.py --interrogator=<TYPE>::<API_KEY> --interrogated=<TYPE>::<API_KEY> [--test]
 ```
 TYPE = gemini, llama, claude, openai, human (only for interrogated)
+
 --test: (Optional) - configures the usage of cheaper models to test around
