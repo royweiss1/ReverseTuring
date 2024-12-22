@@ -20,3 +20,6 @@ python3 main.py --interrogator=<TYPE>::<API_KEY> --interrogated=<TYPE>::<API_KEY
 TYPE = gemini, llama, claude, openai, human (only for interrogated)
 
 --test: (Optional) - configures the usage of cheaper models to test around
+
+## Docs
+https://docs.google.com/document/d/1OyPKWEacg2ieDL0iyMTwHZOM-Att-8-IKPxDbzPlXsA/edit?tab=t.0#heading=h.5yu0gqe61ca
