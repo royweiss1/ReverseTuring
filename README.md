@@ -21,5 +21,8 @@ TYPE = gemini, llama, claude, openai, human (only for interrogated)
 
 --test: (Optional) - configures the usage of cheaper models to test around
 
+![reverse_turing](https://github.com/user-attachments/assets/d4462545-0010-415f-a9f3-c892366110c3)
+
+
 ## Docs
 https://docs.google.com/document/d/1OyPKWEacg2ieDL0iyMTwHZOM-Att-8-IKPxDbzPlXsA/edit?tab=t.0#heading=h.5yu0gqe61ca
