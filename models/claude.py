@@ -1,4 +1,4 @@
-from llm import LLMHandler, MAX_TOKENS
+from models.llm import LLMHandler, MAX_TOKENS
 import anthropic
 
 # Example of a model-specific class

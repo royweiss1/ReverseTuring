@@ -1,7 +1,7 @@
-from llm import LLMHandler, MAX_TOKENS
+from models.llm import LLMHandler, MAX_TOKENS
 from openai import OpenAI
 
-# Example of a model-specific class
+
 class OpenAIGPTHandler(LLMHandler):
     """Handler for OpenAI GPT models."""
 
@@ -14,7 +14,6 @@ class OpenAIGPTHandler(LLMHandler):
             self.model_name = "gpt-4o"
         
         self.history = [{"role": "system", "content": self.system_prompt}]
-
 
     def send_message_interrogator(self, user_message: str, state: str) -> str:
         """
@@ -39,7 +38,6 @@ class OpenAIGPTHandler(LLMHandler):
 
         self.history.append({"role": "assistant", "content": response})
         return response
-    
 
     def send_message_interrogated(self, user_message: str) -> str:
         """

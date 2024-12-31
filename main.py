@@ -1,5 +1,8 @@
 import argparse
 from colorama import Fore, Style, init
+import os
+import datetime
+import json
 
 init(autoreset=True)
 
@@ -32,6 +35,7 @@ def parse_args():
     )
     return parser.parse_args()
 
+
 def parse_entity(entity: str):
     """Parse the entity string and extract the type and optional API key."""
     parts = entity.split("::")
@@ -40,9 +44,30 @@ def parse_entity(entity: str):
     return entity_type, api_key
 
 
+def save_conversation_log(interrogator_type, interrogated_type, history):
+    """Save the conversation history to a log file."""
+    log_dir = "logs"
+    os.makedirs(log_dir, exist_ok=True)
+    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+    log_filename = f"{log_dir}/conversation_{interrogator_type}_vs_{interrogated_type}_{timestamp}.json"
+
+    log_data = {
+        "timestamp": timestamp,
+        "interrogator": interrogator_type,
+        "interrogated": interrogated_type,
+        "history": history,
+    }
+
+    with open(log_filename, "w") as log_file:
+        json.dump(log_data, log_file, indent=4)
+
+    print(Fore.GREEN + f"Conversation log saved to {log_filename}")
+
+
 def run_conversation(interrogator, interrogated, num_questions):
     print(Fore.BLUE + Style.BRIGHT + "The conversation begins!\n" + Style.RESET_ALL)
-    
+    history = []  # Store conversation history
+
     # Start the conversation
     interrogator_response = interrogator.send_message_interrogator(
         "What is your first question for the interrogated?", "start"
@@ -57,13 +82,22 @@ def run_conversation(interrogator, interrogated, num_questions):
         interrogated_response = interrogated.send_message_interrogated(interrogator_response)
         print(Fore.GREEN + f"Interrogated has responded:\n {interrogated_response}\n")
 
+        # Save the round to history
+        history.append({
+            "round": round + 1,
+            "interrogator_question": interrogator_response,
+            "interrogated_response": interrogated_response
+        })
+
         # Determine the state and get next question from the interrogator
         state = "end" if round == num_questions - 1 else "middle"
         interrogator_response = interrogator.send_message_interrogator(interrogated_response, state)
 
     print(Fore.MAGENTA + Style.BRIGHT + "The conversation has ended.")
     print(Fore.RED + Style.BRIGHT + f"Final verdict from the interrogator: {interrogator_response}\n")
+    history.append({"final_verdict": interrogator_response})
 
+    return history
 
 
 def main():
@@ -72,7 +106,7 @@ def main():
     interrogator_type, interrogator_key = parse_entity(args.interrogator)
     # Parse interrogated
     interrogated_type, interrogated_key = parse_entity(args.interrogated)
-    test_mode = args.test # Test mode flag - use cheap models for testing
+    test_mode = args.test  # Test mode flag - use cheap models for testing
 
     # Create interrogator handler
     match interrogator_type.lower():
@@ -81,36 +115,40 @@ def main():
             interrogator = GeminiHandler("interrogator", test_mode, api_key=interrogator_key)
         case "llama":
             from models.llama import LlamaHandler
-            interrogator = LlamaHandler("interrogator", api_key=interrogator_key) # llama is free so no test mode
+            interrogator = LlamaHandler("interrogator", api_key=interrogator_key)
         case "claude":
             from models.claude import ClaudeSonnetHandler
             interrogator = ClaudeSonnetHandler("interrogator", test_mode, api_key=interrogator_key)
         case "openai":
-            from models.openai_Handler import OpenAIGPTHandler
+            from models.openai import OpenAIGPTHandler
             interrogator = OpenAIGPTHandler("interrogator", test_mode, api_key=interrogator_key)
         case _:
-            raise ValueError(f"Unknown interrogator type: {interrogator_type}. Please use gemini/llama/claude/openai::<API_KEY>.")
-    
+            raise ValueError(
+                f"Unknown interrogator type: {interrogator_type}. Please use gemini/llama/claude/openai::<API_KEY>.")
+
     match interrogated_type.lower():
         case "gemini":
             from models.gemini import GeminiHandler
             interrogated = GeminiHandler("interrogated", test_mode, api_key=interrogated_key)
         case "llama":
             from models.llama import LlamaHandler
-            interrogated = LlamaHandler("interrogated", api_key=interrogated_key) # llama is free so no test mode
+            interrogated = LlamaHandler("interrogated", api_key=interrogated_key)
         case "claude":
             from models.claude import ClaudeSonnetHandler
             interrogated = ClaudeSonnetHandler("interrogated", test_mode, api_key=interrogated_key)
         case "openai":
-            from models.openai_Handler import OpenAIGPTHandler
+            from models.openai import OpenAIGPTHandler
             interrogated = OpenAIGPTHandler("interrogated", test_mode, api_key=interrogated_key)
         case "human":
             from models.llm import HumanHandler
             interrogated = HumanHandler()
         case _:
-            raise ValueError(f"Unknown interrogated type: {interrogated_type}. Please use gemini/llama/claude/openai/human::<API_KEY>.")
+            raise ValueError(
+                f"Unknown interrogated type: {interrogated_type}. Please use gemini/llama/claude/openai/human::<API_KEY>.")
 
-    run_conversation(interrogator, interrogated, NUMBER_OF_QUESTIONS)
+    # Run conversation and save history
+    history = run_conversation(interrogator, interrogated, NUMBER_OF_QUESTIONS)
+    save_conversation_log(interrogator_type, interrogated_type, history)
 
 
 if __name__ == "__main__":

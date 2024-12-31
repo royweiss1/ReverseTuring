@@ -1,4 +1,4 @@
-from llm import LLMHandler
+from models.llm import LLMHandler
 import google.generativeai as genai
 from google.generativeai.types import HarmCategory, HarmBlockThreshold
 
