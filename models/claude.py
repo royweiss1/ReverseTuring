@@ -1,12 +1,13 @@
 from models.llm import LLMHandler, MAX_TOKENS
 import anthropic
 
+
 # Example of a model-specific class
 class ClaudeSonnetHandler(LLMHandler):
     """Handler for Claude Sonnet models."""
 
-    def __init__(self, role: str, test_mode: bool, api_key: str):
-        super().__init__(role)
+    def __init__(self, role: str, test_mode: bool, evasion: bool, api_key: str):
+        super().__init__(role, evasion)
         self.client = anthropic.Client(api_key=api_key)
         if test_mode:
             self.model_name = "claude-3-haiku-20240307" # this is the cheap model - use for testing...

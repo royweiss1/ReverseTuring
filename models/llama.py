@@ -1,12 +1,13 @@
 from models.llm import LLMHandler, MAX_TOKENS
 from transformers import pipeline
 
+
 # Example of a model-specific class
 class LlamaHandler(LLMHandler):
     """Handler for OpenAI GPT models."""
 
-    def __init__(self, role: str):
-        super().__init__(role)
+    def __init__(self, role: str, evasion: bool):
+        super().__init__(role, evasion)
         self.pipe = pipeline("text-generation", "Meta-Llama-3.1-8B-Instruct", device=0)
         self.history = [{"role": "system", "content": self.system_prompt}]
 
@@ -29,8 +30,7 @@ class LlamaHandler(LLMHandler):
 
         self.history.append({"role": "assistant", "content": response})
         return response
-    
-    
+
     def send_message_interrogated(self, user_message: str) -> str:
         """
         Sends a message to the Meta's Llama model and returns the response.

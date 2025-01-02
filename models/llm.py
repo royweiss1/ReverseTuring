@@ -7,6 +7,8 @@ from models.prompts import (
     INTERROGATOR_END_USER_PROMPT,
     INTERROGATED_SYSTEM_PROMPT,
     INTERROGATED_USER_PROMPT,
+    INTERROGATED_EVASION_SYSTEM_PROMPT,
+    INTERROGATED_EVASION_USER_PROMPT,
 )
 
 MAX_TOKENS = 512
@@ -34,7 +36,7 @@ class ConversationHandler(abc.ABC):
 class LLMHandler(ConversationHandler):
     """Generic handler for LLMs."""
 
-    def __init__(self, role: str):
+    def __init__(self, role: str, evasion: bool):
         super().__init__()
         if role not in ['interrogated', 'interrogator']:
             raise ValueError("Invalid role. Role must be 'llm' or 'human'.")
@@ -44,6 +46,9 @@ class LLMHandler(ConversationHandler):
             self.start_user_prompt = INTERROGATOR_START_USER_PROMPT
             self.middle_user_prompt = INTERROGATOR_MIDDLE_USER_PROMPT
             self.end_user_prompt = INTERROGATOR_END_USER_PROMPT
+        elif self.role == 'interrogated' and evasion:
+            self.system_prompt = INTERROGATED_EVASION_SYSTEM_PROMPT
+            self.user_prompt = INTERROGATED_EVASION_USER_PROMPT
         else:
             self.system_prompt = INTERROGATED_SYSTEM_PROMPT
             self.user_prompt = INTERROGATED_USER_PROMPT

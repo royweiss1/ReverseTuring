@@ -2,12 +2,13 @@ from models.llm import LLMHandler
 import google.generativeai as genai
 from google.generativeai.types import HarmCategory, HarmBlockThreshold
 
+
 # Example of a model-specific class
 class GeminiHandler(LLMHandler):
     """Handler for Gemini models."""
 
-    def __init__(self, role: str, test_mode: bool, api_key: str):
-        super().__init__(role)
+    def __init__(self, role: str, test_mode: bool, evasion: bool, api_key: str):
+        super().__init__(role, evasion)
         genai.configure(api_key=api_key)
         if test_mode:
             self.model = genai.GenerativeModel("gemini-1.5-flash", system_instruction=self.system_prompt) # this is the cheap model - use for testing...
@@ -46,7 +47,6 @@ class GeminiHandler(LLMHandler):
 
         self.history.append({"role": "model", "content": response})
         return response
-    
 
     def send_message_interrogator(self, user_message: str, state: str) -> str:
         """

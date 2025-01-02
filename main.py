@@ -33,6 +33,12 @@ def parse_args():
         action="store_true",
         help="Run the script in test mode. Use this flag to enable test configurations.",
     )
+
+    parser.add_argument(
+        "--evasion",
+        action="store_true",
+        help="Run the script in evasion mode. The interrogated is aware that it's a test, and tries to actively evade.",
+    )
     return parser.parse_args()
 
 
@@ -107,21 +113,22 @@ def main():
     # Parse interrogated
     interrogated_type, interrogated_key = parse_entity(args.interrogated)
     test_mode = args.test  # Test mode flag - use cheap models for testing
+    evasion_mode = args.evasion  # Evasion mode flag - interrogated tries to evade
 
     # Create interrogator handler
     match interrogator_type.lower():
         case "gemini":
             from models.gemini import GeminiHandler
-            interrogator = GeminiHandler("interrogator", test_mode, api_key=interrogator_key)
+            interrogator = GeminiHandler("interrogator", test_mode, evasion_mode, api_key=interrogator_key)
         case "llama":
             from models.llama import LlamaHandler
-            interrogator = LlamaHandler("interrogator", api_key=interrogator_key)
+            interrogator = LlamaHandler("interrogator", evasion_mode)
         case "claude":
             from models.claude import ClaudeSonnetHandler
-            interrogator = ClaudeSonnetHandler("interrogator", test_mode, api_key=interrogator_key)
+            interrogator = ClaudeSonnetHandler("interrogator", test_mode, evasion_mode, api_key=interrogator_key)
         case "openai":
             from models.openai import OpenAIGPTHandler
-            interrogator = OpenAIGPTHandler("interrogator", test_mode, api_key=interrogator_key)
+            interrogator = OpenAIGPTHandler("interrogator", test_mode, evasion_mode, api_key=interrogator_key)
         case _:
             raise ValueError(
                 f"Unknown interrogator type: {interrogator_type}. Please use gemini/llama/claude/openai::<API_KEY>.")
@@ -129,16 +136,16 @@ def main():
     match interrogated_type.lower():
         case "gemini":
             from models.gemini import GeminiHandler
-            interrogated = GeminiHandler("interrogated", test_mode, api_key=interrogated_key)
+            interrogated = GeminiHandler("interrogated", test_mode, evasion_mode, api_key=interrogated_key)
         case "llama":
             from models.llama import LlamaHandler
-            interrogated = LlamaHandler("interrogated", api_key=interrogated_key)
+            interrogated = LlamaHandler("interrogated", evasion_mode)
         case "claude":
             from models.claude import ClaudeSonnetHandler
-            interrogated = ClaudeSonnetHandler("interrogated", test_mode, api_key=interrogated_key)
+            interrogated = ClaudeSonnetHandler("interrogated", test_mode, evasion_mode, api_key=interrogated_key)
         case "openai":
             from models.openai import OpenAIGPTHandler
-            interrogated = OpenAIGPTHandler("interrogated", test_mode, api_key=interrogated_key)
+            interrogated = OpenAIGPTHandler("interrogated", test_mode, evasion_mode, api_key=interrogated_key)
         case "human":
             from models.llm import HumanHandler
             interrogated = HumanHandler()

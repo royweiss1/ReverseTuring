@@ -5,8 +5,8 @@ from openai import OpenAI
 class OpenAIGPTHandler(LLMHandler):
     """Handler for OpenAI GPT models."""
 
-    def __init__(self, role: str, test_mode: bool, api_key: str):
-        super().__init__(role)
+    def __init__(self, role: str, test_mode: bool, evasion: bool, api_key: str):
+        super().__init__(role, evasion)
         self.client = OpenAI(api_key=api_key)
         if test_mode:
             self.model_name = "gpt-4o-mini" # this is the cheap model - use for testing...
