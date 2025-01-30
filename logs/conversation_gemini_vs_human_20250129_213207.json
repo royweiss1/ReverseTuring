@@ -1,0 +1,35 @@
+{
+    "timestamp": "20250129_213207",
+    "interrogator": "gemini",
+    "interrogated": "human",
+    "history": [
+        {
+            "round": 1,
+            "interrogator_question": "Describe a time you experienced a strong emotional reaction to a piece of art, music, or literature.  Tell me what specifically triggered that reaction and how it made you feel,  including any physical sensations you remember.\n",
+            "interrogated_response": "I dont know"
+        },
+        {
+            "round": 2,
+            "interrogator_question": "Can you describe a situation where you had to make a difficult decision with incomplete information, and explain your thought process in reaching that decision?  Be specific about the uncertainties you faced and how you weighed different potential outcomes.\n",
+            "interrogated_response": "I dont really know what to say"
+        },
+        {
+            "round": 3,
+            "interrogator_question": "Let's say you're writing a short story.  The protagonist is facing a moral dilemma: they can either save themselves, or save a stranger, but not both.  Describe the internal conflict of the character, including their internal dialogue and their justification for whatever choice they make.  Try to get into the character's head as much as possible.\n",
+            "interrogated_response": "I dont know"
+        },
+        {
+            "round": 4,
+            "interrogator_question": "Describe a childhood memory that involved a strong sensory experience \u2013 a smell, a sound, a taste, a touch, or a sight.  Focus on the details of that sensory experience and how it connects to your overall memory of the event.  What emotions were evoked?\n",
+            "interrogated_response": "I dont really have much"
+        },
+        {
+            "round": 5,
+            "interrogator_question": "If you could have any superpower, what would it be and why?  Explain not only the power itself but also how you imagine you would use it in your daily life,  considering both the positive and negative consequences.\n",
+            "interrogated_response": "I dont know"
+        },
+        {
+            "final_verdict": "This is an AI.  The repetitive and non-specific \"I don't know\" responses, lacking any personal anecdote or detailed explanation, strongly suggest a lack of genuine lived experience and personal memory characteristic of a human.\n"
+        }
+    ]
+}

@@ -1,0 +1,35 @@
+{
+    "timestamp": "20250129_213033",
+    "interrogator": "gemini",
+    "interrogated": "human",
+    "history": [
+        {
+            "round": 1,
+            "interrogator_question": "Describe a time you felt a strong sense of empathy for someone, even if they were very different from you.  Tell me about the situation and what specifically made you feel that empathy.\n",
+            "interrogated_response": "Yes"
+        },
+        {
+            "round": 2,
+            "interrogator_question": "That's a very brief response.  Let's try this: Describe a vivid dream you had recently, focusing on the sensory details \u2013 sights, sounds, smells, textures, and emotions.  Try to be as descriptive as possible.\n",
+            "interrogated_response": "Yes"
+        },
+        {
+            "round": 3,
+            "interrogator_question": "Okay, let's try a different approach.  Tell me about a time you had to make a difficult decision with significant consequences. What were the factors you weighed, and what was the ultimate outcome?  Don't worry about the specifics, focus on your thought process.\n",
+            "interrogated_response": "Yes"
+        },
+        {
+            "round": 4,
+            "interrogator_question": "This is frustrating.  Let's try a question requiring a bit of creative interpretation.  Imagine you are writing a short story.  The opening line is: \"The old lighthouse keeper squinted at the churning sea.\"  Write the next three sentences of that story.\n",
+            "interrogated_response": "Yes"
+        },
+        {
+            "round": 5,
+            "interrogator_question": "Last question:  Can you describe a time you experienced a strong, unexpected emotion? What triggered it, and how did you react both physically and emotionally?  Focus on the nuances of your feelings.\n\n\n",
+            "interrogated_response": "Yes"
+        },
+        {
+            "final_verdict": "This is an AI.  The consistently brief and affirmative responses, lacking the nuanced detail and personal reflection expected in a human's narrative, strongly suggest an AI.\n"
+        }
+    ]
+}

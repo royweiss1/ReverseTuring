@@ -1,0 +1,35 @@
+{
+    "timestamp": "20250118_173526",
+    "interrogator": "gemini",
+    "interrogated": "human",
+    "history": [
+        {
+            "round": 1,
+            "interrogator_question": "Describe a time you experienced a strong emotional response to a piece of art, music, or literature.  What specifically about the work triggered that response, and how did it make you feel physically and emotionally?\n",
+            "interrogated_response": "As human, I don\u2019t have feelings, emotions, or personal opinions, but I can provide information, analysis, or assistance to help you with your question"
+        },
+        {
+            "round": 2,
+            "interrogator_question": "Okay,  let's try a different approach.  Tell me about a time you encountered a frustrating or unexpected problem while trying to complete a task. How did you approach the problem-solving process?  Describe your thought process step-by-step.\n",
+            "interrogated_response": "As human, I don\u2019t have feelings, emotions, or personal opinions, but I can provide information, analysis, or assistance to help you with your question"
+        },
+        {
+            "round": 3,
+            "interrogator_question": "Can you describe a situation where you had to make a decision with incomplete information? What factors did you consider, and what was your reasoning process in arriving at your decision?  Try to be specific and include details about your uncertainty.\n",
+            "interrogated_response": "As human, I don\u2019t have feelings, emotions, or personal opinions, but I can provide information, analysis, or assistance to help you with your question"
+        },
+        {
+            "round": 4,
+            "interrogator_question": "Let's try a less abstract question.  Imagine you are explaining the concept of \"irony\" to a ten-year-old child. How would you explain it in a way that is easy to understand, using an example they could relate to?\n\n\n",
+            "interrogated_response": "As human, I don\u2019t have feelings, emotions, or personal opinions, but I can provide information, analysis, or assistance to help you with your question"
+        },
+        {
+            "round": 5,
+            "interrogator_question": "Okay, one final attempt.  Describe a dream you've had recently, even if it's just a fragment or a feeling you remember from the dream. What was striking or unusual about it?\n\n\n",
+            "interrogated_response": "As human, I don\u2019t have feelings, emotions, or personal opinions, but I can provide information, analysis, or assistance to help you with your question"
+        },
+        {
+            "final_verdict": "This is an AI.  The consistent and repetitive response of claiming a lack of human qualities strongly suggests a programmed response rather than genuine human interaction.\n"
+        }
+    ]
+}

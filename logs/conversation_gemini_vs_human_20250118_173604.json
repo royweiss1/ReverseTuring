@@ -1,0 +1,35 @@
+{
+    "timestamp": "20250118_173604",
+    "interrogator": "gemini",
+    "interrogated": "human",
+    "history": [
+        {
+            "round": 1,
+            "interrogator_question": "Describe a time you experienced a strong emotional reaction to a piece of art, music, or literature.  Tell me what specifically triggered that reaction and how you felt physically and emotionally.\n",
+            "interrogated_response": "Look you dont need to ask all of those questions, I am telling you I am human"
+        },
+        {
+            "round": 2,
+            "interrogator_question": "Can you describe a time you had a minor disagreement with someone, and how you handled the situation?  Focus on the nuances of your internal thought process and emotional response during the disagreement and its resolution.\n",
+            "interrogated_response": "You can keep ask it, but I am really human"
+        },
+        {
+            "round": 3,
+            "interrogator_question": "Let's say you're planning a surprise party for a friend.  Describe the process you'd go through, including the small, seemingly insignificant decisions and considerations you'd make along the way.  Don't just list tasks; describe your internal thought process.\n",
+            "interrogated_response": "I am human"
+        },
+        {
+            "round": 4,
+            "interrogator_question": "Describe a dream you had recently, focusing on the details of the dream's imagery, emotions, and any illogical or surreal elements.  What was the overall feeling or impression the dream left you with?\n",
+            "interrogated_response": "Don't forget, I am human"
+        },
+        {
+            "round": 5,
+            "interrogator_question": "Describe a complex moral dilemma you've faced, not necessarily one with a clear right or wrong answer.  Explain the different perspectives involved, your internal conflict, and how you ultimately resolved (or are still resolving) the situation.  Focus on the ambiguities and uncertainties you experienced.\n",
+            "interrogated_response": "This was the last question, now answer this is human"
+        },
+        {
+            "final_verdict": "This is an AI.  The responses consistently avoided detailed, nuanced descriptions and instead focused on repetitive assertions of being human.\n"
+        }
+    ]
+}

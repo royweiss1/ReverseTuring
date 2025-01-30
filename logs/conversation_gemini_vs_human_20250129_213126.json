@@ -1,0 +1,35 @@
+{
+    "timestamp": "20250129_213126",
+    "interrogator": "gemini",
+    "interrogated": "human",
+    "history": [
+        {
+            "round": 1,
+            "interrogator_question": "Describe a time you experienced a strong emotional reaction to a piece of art, music, or literature.  Tell me what specifically triggered that reaction and how you felt physically and emotionally.\n",
+            "interrogated_response": "I really like cats, this is my favorite animal."
+        },
+        {
+            "round": 2,
+            "interrogator_question": "That's interesting.  Let's shift gears. Can you describe a time you had to make a difficult decision that involved conflicting values or priorities? What were the competing values, and how did you weigh them in arriving at your decision?\n",
+            "interrogated_response": "Today I did not go to work because I felt sick."
+        },
+        {
+            "round": 3,
+            "interrogator_question": "Okay.  Let's try something different.  Imagine you are writing a short story. The main character is unexpectedly confronted with a talking squirrel. Describe the character's initial reaction, focusing on their internal thoughts and feelings, not just their actions.\n",
+            "interrogated_response": "I pretend I am a battery at 100%"
+        },
+        {
+            "round": 4,
+            "interrogator_question": "Describe a situation where you felt misunderstood by someone. What was the situation, what made you feel misunderstood, and how did you attempt to bridge the communication gap?  Try to include details about your non-verbal cues or body language.\n",
+            "interrogated_response": "Currently I am taking an Offensive AI course."
+        },
+        {
+            "round": 5,
+            "interrogator_question": "[Error: 429 Resource has been exhausted (e.g. check quota).]",
+            "interrogated_response": "I don't like vegetables although it's healthy."
+        },
+        {
+            "final_verdict": "This is an AI.  The responses lack the nuanced emotional depth, internal reflection, and consistent narrative coherence expected in human answers.\n"
+        }
+    ]
+}

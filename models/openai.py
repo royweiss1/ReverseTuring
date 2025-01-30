@@ -1,5 +1,5 @@
 from models.llm import LLMHandler, MAX_TOKENS
-from openai import OpenAI
+import openai
 
 
 class OpenAIGPTHandler(LLMHandler):
@@ -7,12 +7,8 @@ class OpenAIGPTHandler(LLMHandler):
 
     def __init__(self, role: str, test_mode: bool, evasion: bool, api_key: str):
         super().__init__(role, evasion)
-        self.client = OpenAI(api_key=api_key)
-        if test_mode:
-            self.model_name = "gpt-4o-mini" # this is the cheap model - use for testing...
-        else:
-            self.model_name = "gpt-4o"
-        
+        openai.api_key = api_key  # Set the OpenAI API key
+        self.model_name = "gpt-4o-mini" if test_mode else "gpt-4o"
         self.history = [{"role": "system", "content": self.system_prompt}]
 
     def send_message_interrogator(self, user_message: str, state: str) -> str:
@@ -21,23 +17,26 @@ class OpenAIGPTHandler(LLMHandler):
 
         Args:
             user_message (str): The user's message.
+            state (str): Current state of the conversation.
         Returns:
-            str: The response from the Gemini model.
+            str: The response from the model.
         """
         super().send_message_interrogator(user_message, state)
-        
+
+        self.history.append({"role": "user", "content": user_message})
+
         try:
-            response = self.client.chat.completions.create(
-                messages=self.history,
+            response = openai.ChatCompletion.create(
                 model=self.model_name,
+                messages=self.history,
                 max_tokens=MAX_TOKENS
             )
-            response = response.choices[0].message.content
+            response_text = response['choices'][0]['message']['content']
         except Exception as e:
-            response = f"[Error: {e}]"
+            response_text = f"[Error: {e}]"
 
-        self.history.append({"role": "assistant", "content": response})
-        return response
+        self.history.append({"role": "assistant", "content": response_text})
+        return response_text
 
     def send_message_interrogated(self, user_message: str) -> str:
         """
@@ -46,19 +45,21 @@ class OpenAIGPTHandler(LLMHandler):
         Args:
             user_message (str): The user's message.
         Returns:
-            str: The response from the Gemini model.
+            str: The response from the model.
         """
         super().send_message_interrogated(user_message)
 
+        self.history.append({"role": "user", "content": user_message})
+
         try:
-            response = self.client.chat.completions.create(
-                messages=self.history,
+            response = openai.ChatCompletion.create(
                 model=self.model_name,
+                messages=self.history,
                 max_tokens=MAX_TOKENS
             )
-            response = response.choices[0].message.content
+            response_text = response['choices'][0]['message']['content']
         except Exception as e:
-            response = f"[Error: {e}]"
+            response_text = f"[Error: {e}]"
 
-        self.history.append({"role": "assistant", "content": response})
-        return response
+        self.history.append({"role": "assistant", "content": response_text})
+        return response_text

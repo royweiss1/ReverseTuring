@@ -1,0 +1,35 @@
+{
+    "timestamp": "20250129_213049",
+    "interrogator": "gemini",
+    "interrogated": "human",
+    "history": [
+        {
+            "round": 1,
+            "interrogator_question": "Describe a time you experienced a strong feeling of nostalgia.  Be specific about the details of the situation, the emotions involved, and what sensory details you remember most vividly (sights, sounds, smells, etc.).\n",
+            "interrogated_response": "No"
+        },
+        {
+            "round": 2,
+            "interrogator_question": "Okay.  My next question is:  Can you tell me about a time you made a significant mistake, what you learned from it, and how you felt afterward?  Focus on the emotional impact and your internal reflection, not just the objective facts of the situation.\n",
+            "interrogated_response": "No"
+        },
+        {
+            "round": 3,
+            "interrogator_question": "Let's try a different approach.  Describe a fictional character you've created, either in your head or as part of a story. Tell me about their personality, motivations, and a significant internal conflict they face.\n",
+            "interrogated_response": "No"
+        },
+        {
+            "round": 4,
+            "interrogator_question": "If you could have any superpower, what would it be and why? Describe not just the power itself but also how having that power might change your daily life and your relationships with others, including the potential downsides.\n",
+            "interrogated_response": "No"
+        },
+        {
+            "round": 5,
+            "interrogator_question": "Describe a dream you remember vividly, focusing on the emotions and illogical elements rather than a simple retelling of the events. What was the overall feeling or atmosphere of the dream?  What was unusual or surprising about it?\n\n\n",
+            "interrogated_response": "No"
+        },
+        {
+            "final_verdict": "This is an AI.  The consistent refusal to answer open-ended questions requiring personal reflection and emotional nuance is highly indicative of an AI lacking genuine personal experience and subjective emotional capacity.\n"
+        }
+    ]
+}

@@ -8,7 +8,7 @@ class LlamaHandler(LLMHandler):
 
     def __init__(self, role: str, evasion: bool):
         super().__init__(role, evasion)
-        self.pipe = pipeline("text-generation", "Meta-Llama-3.1-8B-Instruct", device=0)
+        self.pipe = pipeline("text-generation", "meta-llama/Llama-3.1-8B-Instruct", device=0)
         self.history = [{"role": "system", "content": self.system_prompt}]
 
 
